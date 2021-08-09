@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  // 继承的规则 [扩展]
+  "extends": [
+    "eslint:recommended", // 推荐的规则
+    "plugin:@typescript-eslint/recommended", // ts推荐的规则
+    "plugin:prettier/recommended" // 如果同时使用了eslint和prettier发生冲突了，会关闭掉与prettier有冲突的规则，也就是使用prettier认为对的规则
+  ],
+  // 解释器
+  "parser": "@typescript-eslint/parser",
+  // JavaScript 语言选项
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  // 插件
+  "plugins": [
+    "@typescript-eslint",
+    "prettier" //  eslint 会使用pretter的规则对代码格式化
+  ],
+  // 规则
+  "rules": {
+    "prettier/prettier": 2, // 对于不符合prettier规范的写法，eslint会提示报错
+    "spaced-comment": [2, "always"] // 注释后面必须写两个空格
+  }
+}
