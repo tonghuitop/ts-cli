@@ -1,11 +1,23 @@
 {
-  "name": "hui-cli",
+  "name": "@tonghui/ts-cli",
+  "main": "./lib/index.js",
+  "keywords": [
+    "typescript",
+    "cli",
+    "ts-cli",
+    "ts 脚手架",
+    "typescript 脚手架"
+  ],
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "typescript 项目脚手架",
   "bin": {
     "ts-cli": "./bin/cli.js"
   },
+  "files": [
+    "package.json",
+    "README.md",
+    "lib"
+  ],
   "scripts": {
     "dev:comment": "启动开发环境",
     "dev": "ts-node-dev --respawn --transpile-only index.ts",
@@ -18,6 +30,10 @@
     "commit:comment": "引导设置规范化的提交信息",
     "commit": "cz"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonghuitop/ts-cli"
+  },
   "husky": {
     "pre-commit": "lint-staged",
     "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
@@ -28,7 +44,7 @@
       "npm run prettier"
     ]
   },
-  "author": "",
+  "author": "tonghui",
   "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
