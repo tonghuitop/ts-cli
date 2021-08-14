@@ -157,16 +157,13 @@ function installHusky(
   shell.exec('npm i husky lint-staged -D')
   // 设置 package.json
   const packageJson = readJsonFile<PackageJSON>('./package.json')
-  packageJson['husky'] = {
-    hooks: {
-      'pre-commit': 'lint-staged',
-      ...hooks
-    }
-  }
   packageJson['lint-staged'] = {
     '*.ts': lintStaged.map((item) => `npm run ${item}`)
   }
   writeJsonFile<PackageJSON>('./package.json', packageJson)
+  shell.exec(
+    'npx husky install && npx husky add .husky/pre-commit "npx lint-staged"'
+  )
 }
 
 /**
