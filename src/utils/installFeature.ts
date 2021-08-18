@@ -1,5 +1,5 @@
 /**
- * 安装报的方法
+ * 安装包的方法
  */
 import * as shell from 'shelljs'
 import { writeFileSync } from 'fs'
@@ -64,38 +64,22 @@ function installPrettier(): void {
   shell.exec('npm i prettier -D')
   // 添加 prettier.json
   const prettierrc = `{
-    // 一行最多 80 字符
     "printWidth": 80,
-    // 使用 2 个空格缩进
     "tabWidth": 2,
-    // 不使用 tab 缩进，而使用空格
     "useTabs": false,
-    // 行尾需要有分号
     "semi": false,
-    // 使用单引号代替双引号
     "singleQuote": true,
-    // 对象的 key 仅在必要时用引号
     "quoteProps": "as-needed",
-    // jsx 不使用单引号，而使用双引号
     "jsxSingleQuote": false,
-    // 末尾不实用逗号
     "trailingComma": "none",
-    // 大括号内的首尾需要空格 { foo: bar }
     "bracketSpacing": true,
-    // jsx 标签的反尖括号需要换行
     "jsxBracketSameLine": true,
-    // 箭头函数，只有一个参数的时候，也需要括号
     "arrowParens": "always",
-    // 不需要写文件开头的 @prettier
     "requirePragma": false,
-    // 不需要自动在文件开头插入 @prettier
     "insertPragma": false,
-    // 使用默认的折行标准
-    proseWrap: 'preserve',
-    // 根据显示样式决定 html 要不要折行
-    htmlWhitespaceSensitivity: 'css',
-    // 换行符使用 lf
-    endOfLine: 'lf'
+    "proseWrap": "preserve",
+    "htmlWhitespaceSensitivity": "css",
+    "endOfLine": "lf"
   }`
   try {
     writeFileSync('./.prettierrc.json', prettierrc, { encoding: 'utf-8' })
@@ -153,6 +137,18 @@ function installHusky(
 ): void {
   // 初始化 git 仓库
   shell.exec('git init')
+  const gitignoreJson = `
+    lib/
+    node_modules/
+  `
+  try {
+    writeFileSync('./.gitignore.json', gitignoreJson)
+  } catch (err) {
+    printMsg(`${red('Failed to write .gitignore file content')}`)
+    printMsg(`${red('Please add the following content in .gitignore')}`)
+    printMsg(`${red(gitignoreJson)}`)
+  }
+
   // 在安装 husky 和 lint-staged
   shell.exec('npm i husky lint-staged -D')
   // 设置 package.json
