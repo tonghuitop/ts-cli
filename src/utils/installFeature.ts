@@ -12,7 +12,7 @@ import { PackageJSON, printMsg, readJsonFile, writeJsonFile } from './common'
  */
 function installESLint(): void {
   shell.exec(
-    'npm i eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-prettier -D'
+    'npm i eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-config-prettier eslint-plugin-prettier -D'
   )
   // 添加 eslintrc.json
   const eslintrc = `{

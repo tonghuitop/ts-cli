@@ -8,7 +8,7 @@
     "ts 脚手架",
     "typescript 脚手架"
   ],
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "typescript 项目脚手架",
   "bin": {
     "ts-cli": "./bin/cli.js"
